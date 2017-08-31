@@ -36,7 +36,7 @@ fn ways_to_share_data() {
         //mutable reference
         let mut foo = String::from("data");
         let bar = &mut foo;  //create a mut reference
-        //        println!("{}", foo);  //only 1 mut reference allowed
+        //        println!("{}", &foo);  //only 1 mut reference allowed
     }
 }
 
