@@ -1,0 +1,8 @@
+[root]
+name = "ownership"
+version = "0.1.0"
+
+[[package]]
+name = "bank_api"
+version = "0.1.0"
+
