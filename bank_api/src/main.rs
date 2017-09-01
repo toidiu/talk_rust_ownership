@@ -73,6 +73,8 @@ struct Transaction<'a> {
 }
 
 impl<'a> Transaction<'a> {
+    // we want to change this to move so that we can only call execute once!!
+    //fn execute(&mut self) {
     fn execute(self) {
         self.from.balance.value -= self.amount;
         self.to.balance.value += self.amount;
