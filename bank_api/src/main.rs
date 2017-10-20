@@ -23,8 +23,10 @@ fn main() {
     //    transfer1.execute();
 
     { /* TRANSACTION 1: Restrict the scope to the block. */
-        let mut transfer = Transaction { from: &mut alice_acc, to: &mut bob_acc, amount: 10 };
+        let transfer = Transaction { from: &mut alice_acc, to: &mut bob_acc, amount: 10 };
         transfer.execute();
+        //transfer.execute(); //once we change the API of execute to take ownership of the
+        //transaction then we cant execute it more than once.
     }
     check_accounts(vec![&alice_acc, &bob_acc]);
 
@@ -71,7 +73,7 @@ struct Transaction<'a> {
 }
 
 impl<'a> Transaction<'a> {
-    fn execute(&mut self) {
+    fn execute(self) {
         self.from.balance.value -= self.amount;
         self.to.balance.value += self.amount;
     }
